@@ -1,15 +1,17 @@
 
+const inputCity = document.getElementById('input-city')
+const btn = document.getElementById('button')
+
 
 const getCity = async function (cityName) {
 
     const url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=cc22f8277ff25439908eaf210aac9132`);
     
     const mainPage = document.getElementById('app')
-    // const inputCity = document.getElementById('input-city')
 
    const data = await url.json()
 
-   console.log(data);
+//    console.log(data);
 
 
     const html = `<div class="input-group mb-3 d-flex flex-column border rounded-2 align-content-center text-center gap-4 justify-content-center" style="height:400px">
@@ -27,13 +29,28 @@ const getCity = async function (cityName) {
     <div class="d-flex flex-row gap-2 text-center justify-content-around border justify-center">
     <p> Humidity: ${data.main.humidity}</p>
     <p> Wind Speed: ${data.wind.speed}</p>
-
-
     </div>
-
     </div>`
 
     mainPage.insertAdjacentHTML('beforeend', html)
 }
 
 getCity('rasht');
+
+
+
+btn.addEventListener("click", () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  // alert(email,password)
+  axios.get("https://64735fded784bccb4a3c8436.mockapi.io/WeatherAppLoginpage", {
+      email: email,
+      password: password
+    })
+    .then((response) => {
+      // console.log(response);
+      alert(email)
+      alert(password)
+    });
+});
