@@ -1,39 +1,52 @@
 // import axios from "axios"
 
-const inputCity = document.getElementById('input-city')
-const btn = document.getElementById('button')
+const input = document.querySelector('.input-city');
+const weatherIcon = document.querySelector('.weather-icon')
 
 
 const getCity = async function (cityName) {
+  const url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=cc22f8277ff25439908eaf210aac9132&units=metric`);
+  // const mainPage = document.getElementById('app')
+  const data = await url.json();
+  const weather = document.querySelector('.weather')
+  console.log(data)
+  document.querySelector('.city').innerHTML = data.name;
+  document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + " c";
+  document.querySelector('.humidity').innerHTML = data.main.humidity;
+  document.querySelector('.wind').innerHTML = data.wind.speed;
 
-    const url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=cc22f8277ff25439908eaf210aac9132`);
-    
-    const mainPage = document.getElementById('app')
+  if(data.weather[0].main == 'Clouds'){
+    weatherIcon.src = 'assets/image/cloud-png.png'
+  }
+  else if(data.weather[0].main == 'Rain'){
+    weatherIcon.src = 'assets/image/rainny.png'
+  }
 
-   const data = await url.json()
+  weather.style.opacity = 1;
 
-//    console.log(data);
+  // if(data.weather[0].main == 'Clouds'){
+  //   weatherIcon.src = 'assets/image/cloud-png'
+  // } else if(data.weather[0].main == 'Clear'){
+  //   weatherIcon.src = 'assets/image/sunny'
+  // }else if(data.weather[0].main == 'Rain'){
+  //   weatherIcon.src = 'assets/image/rainny'
+  // }
 
 
-    const html = `<div class="input-group mb-3 d-flex flex-column border rounded-2 align-content-center text-center gap-4 justify-content-center" style="height:400px">
 
-    <img src="${data.weather[0].icon}" width="300px" alt="" class="d-flex border">
-    <p>${data.weather[0].description}</p>
-    
-    <div class="d-flex flex-row gap-2 text-center justify-content-around border justify-center">
-    <p> Feels Like: ${data.main.feels_like.toFixed(0)
-    }</p>
-    <p>Tempature: ${data.main.temp.toFixed(2)}</p>
-    </div>
-    
-
-    <div class="d-flex flex-row gap-2 text-center justify-content-around border justify-center">
-    <p> Humidity: ${data.main.humidity}</p>
-    <p> Wind Speed: ${data.wind.speed}</p>
-    </div>
-    </div>`
-
-    mainPage.insertAdjacentHTML('beforeend', html)
 }
 
-getCity('rasht');
+
+input.addEventListener('input', (event) => {
+  event.preventDefault(); 
+
+    // console.log(i)
+  
+     getCity(input.value);
+    
+  // }
+  
+});
+// getCity('tehran')
+
+
