@@ -1,3 +1,4 @@
+// import axios from "axios"
 
 const inputCity = document.getElementById('input-city')
 const btn = document.getElementById('button')
@@ -36,21 +37,3 @@ const getCity = async function (cityName) {
 }
 
 getCity('rasht');
-
-
-
-btn.addEventListener("click", () => {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  // alert(email,password)
-  axios.get("https://64735fded784bccb4a3c8436.mockapi.io/WeatherAppLoginpage", {
-      email: email,
-      password: password
-    })
-    .then((response) => {
-      // console.log(response);
-      alert(email)
-      alert(password)
-    });
-});
