@@ -16,10 +16,13 @@ const getCity = async function (cityName) {
   document.querySelector('.wind').innerHTML = data.wind.speed;
 
   if(data.weather[0].main == 'Clouds'){
-    weatherIcon.src = 'assets/image/cloud-png.png'
+    weatherIcon.src = 'assets/image/cloud-png.webp'
   }
   else if(data.weather[0].main == 'Rain'){
     weatherIcon.src = 'assets/image/rainny.png'
+  }
+  else if(data.weather[0].main == 'Clear'){
+    weatherIcon.src = 'assets/image/sunny.png'
   }
 
   weather.style.opacity = 1;
@@ -40,9 +43,11 @@ const getCity = async function (cityName) {
 input.addEventListener('input', (event) => {
   event.preventDefault(); 
 
-    // console.log(i)
+  setTimeout(() => {
+    getCity(input.value);
+  }, 2000);
   
-     getCity(input.value);
+     
     
   // }
   
