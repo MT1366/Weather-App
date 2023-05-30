@@ -1,40 +1,29 @@
 
-const btn = document.getElementById('button')
+// const form = document.querySelector('form')
+// import axios from "https://unpkg.com/axios/dist/axios.min.js"
 
+import "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js";
 
-btn.addEventListener("submit", () => {
-    
-    // e.preventDefault()
-    const form = document.getElementById('form');
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+const form = document.getElementById('form');
 
-    const formData = new FormData(form);
-    formData.append('email', email);
-    formData.append('password', password);
+const btn = document.getElementById('button');
+btn.addEventListener("click", () => {
 
-  fetch("https://64735fded784bccb4a3c8436.mockapi.io/WeatherAppLoginpage", {
-    method: 'POST',
-    body: formData
-  })
-  .then (response => {
-    if (response.ok) {
-      console.log('data added')
-    } else {
-      console.log('error')
-    } 
-  })
-    .cath(error => {
-      console.log('failed')
-  })
+  const password = document.querySelector('#password').value;
+  const email = document.querySelector('#email').value;
+
+axios.post("https://64735fded784bccb4a3c8436.mockapi.io/WeatherAppLoginpage", {
+email: email,
+password: password,
+})
+.then((data) => {
+  console.log(data)
+  window.location.href = "http://127.0.0.1:5500/weather.html"
+})
+.catch((error) => {
+console.error(error);
+// Handle errors here
+});
+
 })
 
-// });
-// alert(email,password)
-// axios.post("https://64735fded784bccb4a3c8436.mockapi.io/WeatherAppLoginpage",formData)
-//     .then(response => {
-//       console.log(response)
-//     })
-//     .cath(error => {
-//       console.log('error')
-//     })

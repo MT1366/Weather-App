@@ -38,6 +38,9 @@ const getCity = async function (cityName) {
 
 
 }
+// .catch(){
+//   console.err.
+// }
 
 
 input.addEventListener('input', (event) => {
