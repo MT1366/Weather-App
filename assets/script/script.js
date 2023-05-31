@@ -2,6 +2,12 @@
 
 const input = document.querySelector('.input-city');
 const weatherIcon = document.querySelector('.weather-icon')
+const logOut = document.getElementById('log-out');
+
+logOut.addEventListener('click',function(){
+  window.location.href = "http://127.0.0.1:5500/index.html"
+
+})
 
 
 const getCity = async function (cityName) {
@@ -48,7 +54,7 @@ input.addEventListener('input', (event) => {
 
   setTimeout(() => {
     getCity(input.value);
-  }, 2000);
+  }, 1000);
   
      
     
