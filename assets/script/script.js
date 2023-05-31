@@ -9,6 +9,33 @@ logOut.addEventListener('click',function(){
 
 })
 
+// // Get the input tag element
+// const inputTag = document.getElementById('input-tag');
+
+// // Create a modal element
+// const modal = document.createElement('div');
+// modal.classList.add('modal');
+
+// // Listen for input events on the input tag
+// inputTag.addEventListener('input', () => {
+//   // Get the input value
+//   const inputValue = inputTag.value;
+
+//   // Create a new modal content element with the input value
+//   const modalContent = document.createElement('div');
+//   modalContent.classList.add('modal-content');
+//   modalContent.textContent = inputValue;
+
+//   // Add the new modal content element to the modal
+//   modal.appendChild(modalContent);
+
+//   // Show the modal
+//   modal.style.display = 'block';
+// });
+
+// // Add the modal to the document body
+// document.body.appendChild(modal);
+
 
 const getCity = async function (cityName) {
   const url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=cc22f8277ff25439908eaf210aac9132&units=metric`);
